@@ -54,9 +54,6 @@ jobs:
         run: |
           [ ${{ steps.vars.outputs.version }} = $(grep '"version":' package.json | grep -o "[0-9.]*") ] || (echo "Git tag doesn't match version in package.json" && false)
 
-      - name: Publish to npm
-        run: npm publish
-
       - name: Create GitHub Release Draft
         uses: actions/create-release@v1
         with:
