@@ -23,7 +23,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^3.2.0-rc.0",
     "@openzeppelin/upgrades-core": "^1.0.1",
-    "torn-token": "git+https://github.com/tornadocash/torn-token.git#d7b86c01538cd26afae73885f66269a98c02aa3f"
+    "torn-token": "git+https://github.com/tornadocash/torn-token.git#ed68304596f73bf746321e1cd2454979688ef1dd"
   },
   "devDependencies": {
     "@openzeppelin/truffle-upgrades": "^1.0.2",
