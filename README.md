@@ -1,4 +1,4 @@
-# Tornado.Cash Governance [![Build Status](https://github.com/tornadocash/tornado-governance/workflows/build/badge.svg)](https://github.com/tornadocash/tornado-governance/actions)
+# Tornado.Cash Governance [![Build Status](https://github.com/tornadocash/tornado-governance/workflows/build/badge.svg)](https://github.com/tornadocash/tornado-governance/actions) [![npm](https://img.shields.io/npm/v/tornado-governance)](https://www.npmjs.com/package/tornado-governance)
 
 Usage:
 
