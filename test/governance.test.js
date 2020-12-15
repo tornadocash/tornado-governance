@@ -72,10 +72,12 @@ contract('Governance', (accounts) => {
   let domain
   let votingDelay
   let votingPeriod
+  let executionExpiration
   let executionDelay
+  let extendTime
   let proposalStartTime
   let proposalEndTime
-  let delay
+  let lockingPeriod
   let balanceProposer
   const cap = toBN(tornConfig.torn.cap)
   const tenThousandTorn = toBN(10).pow(toBN(18)).mul(toBN(10000))
@@ -100,12 +102,14 @@ contract('Governance', (accounts) => {
     await torn.transfer(proposer, balanceProposer, { from: miningPublicKey })
     await torn.setChainId(chainId)
     await governance.setTimestamp(timestamp)
-    delay = duration.days(2)
     votingDelay = await governance.VOTING_DELAY()
     votingPeriod = await governance.VOTING_PERIOD()
+    executionExpiration = await governance.EXECUTION_EXPIRATION()
     executionDelay = await governance.EXECUTION_DELAY()
+    extendTime = await governance.VOTE_EXTEND_TIME()
     proposalStartTime = new BN(timestamp).add(votingDelay)
     proposalEndTime = votingPeriod.add(toBN(proposalStartTime))
+    lockingPeriod = Number(extendTime) + Number(executionExpiration) + Number(executionDelay)
     domain = {
       name: await torn.name(),
       version: '1',
@@ -167,7 +171,7 @@ contract('Governance', (accounts) => {
       state.should.be.eq.BN(ProposalState.Active)
 
       const accountLock = await governance.canWithdrawAfter(proposer)
-      accountLock.should.be.eq.BN(proposalEndTime.add(toBN(delay)))
+      accountLock.should.be.eq.BN(proposalEndTime.add(toBN(lockingPeriod)))
     })
     it('fails if target is not a contract', async () => {
       await governance
@@ -190,7 +194,7 @@ contract('Governance', (accounts) => {
     })
     it('fails if proposer does not have voting power', async () => {
       const voterBob = accounts[5]
-      const tenThousandTorn = toBN(10).pow(toBN(18)).mul(toBN(9999))
+      const tenThousandTorn = toBN(10).pow(toBN(18)).mul(toBN(999))
       await torn.transfer(voterBob, tenThousandTorn, { from: miningPublicKey })
 
       await torn.approve(governance.address, tenThousandTorn, { from: voterBob })
@@ -380,7 +384,7 @@ contract('Governance', (accounts) => {
       await governance.castVote(id, true, { from: voterAlice })
 
       const lockAfter = await governance.canWithdrawAfter(voterAlice)
-      lockAfter.should.be.eq.BN(proposalEndTime.add(executionDelay))
+      lockAfter.should.be.eq.BN(proposalEndTime.add(toBN(lockingPeriod)))
     })
     it('does not reduce lock time', async () => {
       const voterAlice = accounts[7]
@@ -429,9 +433,8 @@ contract('Governance', (accounts) => {
       let state = await governance.state(id)
       state.should.be.eq.BN(ProposalState.Active)
       await governance.castVote(id, true, { from: proposer })
-      await governance.setTimestamp(proposalEndTime.add(toBN(1)))
 
-      await governance.setTimestamp(proposalEndTime.add(toBN(delay).add(toBN(duration.days(1)))))
+      await governance.setTimestamp(proposalEndTime.add(toBN(executionDelay).add(toBN(duration.days(1)))))
 
       const receipt = await governance.execute(id)
       const debugLog = receipt.receipt.rawLogs[0]
@@ -550,7 +553,7 @@ contract('Governance', (accounts) => {
     })
     it('unlock if there proposals expired', async () => {
       await governance.propose(dummy.address, 'dummy', { from: proposer })
-      await governance.setTimestamp(proposalEndTime.add(toBN(delay + duration.minutes(1))))
+      await governance.setTimestamp(proposalEndTime.add(toBN(lockingPeriod + duration.minutes(1))))
       await governance.unlock(balanceProposer, { from: proposer })
     })
   })
@@ -668,12 +671,11 @@ contract('Governance', (accounts) => {
       let state = await governance.state(id)
       state.should.be.eq.BN(ProposalState.Active)
       await governance.castVote(id, true, { from: proposer })
-      await governance.setTimestamp(proposalEndTime.add(toBN(1)))
 
-      await governance.setTimestamp(proposalEndTime.add(toBN(delay).add(toBN(duration.days(1)))))
+      await governance.setTimestamp(proposalEndTime.add(toBN(executionDelay).add(toBN(duration.days(1)))))
 
       const EXECUTION_DELAY_BEFORE = await governance.EXECUTION_DELAY()
-      EXECUTION_DELAY_BEFORE.should.be.eq.BN(delay)
+      EXECUTION_DELAY_BEFORE.should.be.eq.BN(duration.days(2))
       const receipt = await governance.execute(id)
       const EXECUTION_DELAY_AFTER = await governance.EXECUTION_DELAY()
       EXECUTION_DELAY_AFTER.should.be.eq.BN(duration.days(3))
@@ -690,9 +692,8 @@ contract('Governance', (accounts) => {
       let state = await governance.state(id)
       state.should.be.eq.BN(ProposalState.Active)
       await governance.castVote(id, true, { from: proposer })
-      await governance.setTimestamp(proposalEndTime.add(toBN(1)))
 
-      await governance.setTimestamp(proposalEndTime.add(toBN(delay).add(toBN(duration.days(1)))))
+      await governance.setTimestamp(proposalEndTime.add(toBN(executionDelay).add(toBN(duration.days(1)))))
 
       const newGovernance = await NewImplementation.at(governance.address)
       const receipt = await governance.execute(id)
