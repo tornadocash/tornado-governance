@@ -1,11 +1,11 @@
-# Tornado.Cash Governance [![Build Status](https://github.com/tornadocash/governance/workflows/build/badge.svg)](https://github.com/tornadocash/governance/actions)
+# Tornado.Cash Governance [![Build Status](https://github.com/tornadocash/tornado-governance/workflows/build/badge.svg)](https://github.com/tornadocash/tornado-governance/actions)
 
 Usage:
 
 ```
 yarn
 cp .env.example .env
-yarn deploy:kovan
+yarn test
 ```
 
 ## How to upgrade implementation
