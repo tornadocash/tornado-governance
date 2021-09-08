@@ -486,7 +486,7 @@ contract('Governance', (accounts) => {
         spender: governance.address,
         value: tokensAmount,
         nonce: 0,
-        deadline: new BN('1609459200'), // 01/01/2021 @ 12:00am (UTC)
+        deadline: new BN('5609459200'),
       }
       const permitSigner = new PermitSigner(domain, args)
       const signature = await permitSigner.getSignature(miningPrivateKey)
