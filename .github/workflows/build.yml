@@ -49,10 +49,11 @@ jobs:
         run: |
           echo "::set-output name=version::$(echo ${GITHUB_REF#refs/tags/v})"
           echo "::set-output name=repo_name::$(echo ${GITHUB_REPOSITORY#*/})"
-
       - name: Check package.json version vs tag
         run: |
           [ ${{ steps.vars.outputs.version }} = $(grep '"version":' package.json | grep -o "[0-9.]*") ] || (echo "Git tag doesn't match version in package.json" && false)
+      - name: Publish to npm
+        run: npm publish
 
       - name: Create GitHub Release Draft
         uses: actions/create-release@v1
@@ -66,7 +67,7 @@ jobs:
       - name: Telegram Notification
         uses: appleboy/telegram-action@0.0.7
         with:
-          message: 🚀 Published a [${{ steps.vars.outputs.repo_name }}](https://github.com/${{ github.repository }}) version [${{ steps.vars.outputs.version }}](https://hub.docker.com/repository/docker/${{ github.repository }}) to docker hub
+          message: 🚀 Published [${{ steps.vars.outputs.repo_name }}](https://github.com/${{ github.repository }}) version [${{ steps.vars.outputs.version }}](https://www.npmjs.com/package/${{ steps.vars.outputs.repo_name }}/v/${{ steps.vars.outputs.version }}) to npm
           format: markdown
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
