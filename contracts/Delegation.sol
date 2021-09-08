@@ -47,7 +47,7 @@ abstract contract Delegation is Core {
     address[] memory from,
     uint256 proposalId,
     bool support
-  ) external {
+  ) external virtual {
     for (uint256 i = 0; i < from.length; i++) {
       require(delegatedTo[from[i]] == msg.sender, "Governance: not authorized");
       _castVote(from[i], proposalId, support);

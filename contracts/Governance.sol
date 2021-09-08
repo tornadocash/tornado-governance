@@ -113,7 +113,7 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
     _transferTokens(msg.sender, amount);
   }
 
-  function unlock(uint256 amount) external {
+  function unlock(uint256 amount) external virtual {
     require(getBlockTimestamp() > canWithdrawAfter[msg.sender], "Governance: tokens are locked");
     lockedBalance[msg.sender] = lockedBalance[msg.sender].sub(amount, "Governance: insufficient balance");
     require(torn.transfer(msg.sender, amount), "TORN: transfer failed");
@@ -191,7 +191,7 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
     emit ProposalExecuted(proposalId);
   }
 
-  function castVote(uint256 proposalId, bool support) external {
+  function castVote(uint256 proposalId, bool support) external virtual {
     _castVote(msg.sender, proposalId, support);
   }
 
@@ -241,7 +241,7 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
     }
   }
 
-  function _transferTokens(address owner, uint256 amount) internal {
+  function _transferTokens(address owner, uint256 amount) internal virtual {
     require(torn.transferFrom(owner, address(this), amount), "TORN: transferFrom failed");
     lockedBalance[owner] = lockedBalance[owner].add(amount);
   }
