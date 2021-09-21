@@ -104,12 +104,12 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
     uint8 v,
     bytes32 r,
     bytes32 s
-  ) external {
+  ) external virtual {
     torn.permit(owner, address(this), amount, deadline, v, r, s);
     _transferTokens(owner, amount);
   }
 
-  function lockWithApproval(uint256 amount) external {
+  function lockWithApproval(uint256 amount) external virtual {
     _transferTokens(msg.sender, amount);
   }
 
