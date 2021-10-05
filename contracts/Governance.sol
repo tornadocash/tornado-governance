@@ -104,16 +104,16 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
     uint8 v,
     bytes32 r,
     bytes32 s
-  ) external virtual {
+  ) public virtual {
     torn.permit(owner, address(this), amount, deadline, v, r, s);
     _transferTokens(owner, amount);
   }
 
-  function lockWithApproval(uint256 amount) external virtual {
+  function lockWithApproval(uint256 amount) public virtual {
     _transferTokens(msg.sender, amount);
   }
 
-  function unlock(uint256 amount) external virtual {
+  function unlock(uint256 amount) public virtual {
     require(getBlockTimestamp() > canWithdrawAfter[msg.sender], "Governance: tokens are locked");
     lockedBalance[msg.sender] = lockedBalance[msg.sender].sub(amount, "Governance: insufficient balance");
     require(torn.transfer(msg.sender, amount), "TORN: transfer failed");
