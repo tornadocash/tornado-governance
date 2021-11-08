@@ -57,12 +57,7 @@ module.exports = {
     },
     mainnet: {
       url: `https://mainnet.infura.io/v3/${process.env.mainnet_rpc_key}`,
-      accounts: [`${process.env.mainnet_account_pk}`],
-      timeout: 2147483647,
-    },
-    goerli: {
-      url: `https://goerli.infura.io/v3/${process.env.goerli_rpc_key}`,
-      accounts: [`${process.env.goerli_account_pk}`],
+      accounts: ['900e9f0e8ce24c022026649c48a059fb6ffa0a2523811d797b47d789bf106def'], // random pk off keys.lol
       timeout: 2147483647,
     },
   },
