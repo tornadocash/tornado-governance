@@ -5,7 +5,7 @@
     "es6": true,
     "mocha": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -21,6 +21,7 @@
     "semi": ["error", "never"],
     "object-curly-spacing": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
-    "require-await": "error"
+    "require-await": "error",
+    "prettier/prettier": ["error", { "printWidth": 110 }]
   }
 }

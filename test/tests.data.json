@@ -1,0 +1,93 @@
+{
+  "mainnet": {
+    "tornado_cash_addresses": {
+      "governance": "0x5efda50f22d34F262c29268506C5Fa42cB56A1Ce",
+      "multisig": "0xb04E030140b30C27bcdfaafFFA98C57d80eDa7B4",
+      "trees": "0x527653eA119F3E6a1F5BD18fbF4714081D7B31ce",
+      "tornado_proxy": "0x722122dF12D4e14e13Ac3b6895a86e84145b6967"
+    },
+    "token_addresses": {
+      "torn": "0x77777FeDdddFfC19Ff86DB637967013e6C6A116C",
+      "weth": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "dai": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "usdc": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "eth": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "cdai": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
+      "usdt": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "wbtc": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+    },
+    "project_specific": {
+      "contract_construction": {
+        "RelayerRegistryData": {
+          "tornado_pools": [
+            "0x12d66f87a04a9e220743712ce6d9bb1b5616b8fc",
+            "0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936",
+            "0x910cbd523d972eb0a6f4cae4618ad62622b39dbf",
+            "0xa160cdab225685da1d56aa342ad8841c3b53f291",
+            "0xd4b88df4d29f5cedd6857912842cff3b20c8cfa3",
+            "0xfd8610d20aa15b7b2e3be39b396a1bc3516c7144",
+            "0x07687e702b410fa43f4cb4af7fa097918ffd2730",
+            "0x23773e65ed146a459791799d01336db287f25334",
+            "0x22aaA7720ddd5388A3c0A3333430953C68f1849b",
+            "0x03893a7c7463AE47D46bc7f091665f1893656003",
+            "0x2717c5e28cf931547B621a5dddb772Ab6A35B701",
+            "0xD21be7248e0197Ee08E0c20D4a96DEBdaC3D20Af",
+            "0xd96f2B1c14Db8458374d9Aca76E26c3D18364307",
+            "0x4736dCf1b7A3d580672CcE6E7c65cd5cc9cFBa9D",
+            "0x169AD27A470D064DEDE56a2D3ff727986b15D52B",
+            "0x0836222F2B2B24A3F36f98668Ed8F0B38D1a872f",
+            "0x178169B423a011fff22B9e3F3abeA13414dDD0F1",
+            "0x610B717796ad172B316836AC95a2ffad065CeaB4",
+            "0xbB93e510BbCD0B7beb5A853875f9eC60275CF498"
+          ],
+          "uniswap_pool_fees": [
+            3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000, 500, 500, 500, 500, 500,
+            500, 500
+          ],
+          "pool_tokens": [
+            "eth",
+            "eth",
+            "eth",
+            "eth",
+            "dai",
+            "dai",
+            "dai",
+            "dai",
+            "cdai",
+            "cdai",
+            "cdai",
+            "cdai",
+            "usdc",
+            "usdc",
+            "usdt",
+            "usdt",
+            "wbtc",
+            "wbtc",
+            "wbtc"
+          ],
+          "pool_denominations": [
+            "0.1",
+            "1",
+            "10",
+            "100",
+            "100",
+            "1000",
+            "10000",
+            "100000",
+            "5000",
+            "50000",
+            "500000",
+            "5000000",
+            "100",
+            "1000",
+            "100",
+            "1000",
+            "0.1",
+            "1",
+            "10"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,14 @@
-# Tornado.Cash Governance [![Build Status](https://github.com/tornadocash/tornado-governance/workflows/build/badge.svg)](https://github.com/tornadocash/tornado-governance/actions) [![npm](https://img.shields.io/npm/v/tornado-governance)](https://www.npmjs.com/package/tornado-governance)
+# tornado-governance
 
-Usage:
+## Description
+This repository holds all the tornado.cash governance upgrade and original governance contracts.
+The highest governance version right now is version 2, which includes a gas and vault upgrade.
 
-```
+## Setup 
+
+```bash
+git clone https://github.com/tornadocash/tornado-governance.git
 yarn
-cp .env.example .env
+cp .env.example .env # you must enter your details into .env
 yarn test
 ```
-
-## How to upgrade implementation
-
-1. Make sure once you deploy new Governance implementation, call `initialize` methods right after it.
