@@ -85,10 +85,7 @@ describe('Governance tests', () => {
 
     proxy = await ethers.getContractFactory('MockProxy')
 
-    proxy = await proxy.deploy(
-      governance.address,
-      '0xc4d66de8000000000000000000000000c351628eb244ec633d5f21fbd6621e1a683b1181',
-    )
+    proxy = await proxy.deploy(governance.address, [])
 
     governance = await ethers.getContractAt('MockGovernance', proxy.address)
 
@@ -96,7 +93,7 @@ describe('Governance tests', () => {
       { to: miningPublicKey, amount: cap.toString() },
     ])
 
-    await governance.setTorn(torn.address)
+    await governance.initialize(torn.address + '000000000000000000000000')
 
     expect(await governance.torn()).to.equal(torn.address)
 
@@ -223,21 +220,21 @@ describe('Governance tests', () => {
     })
     it('fails if proposer does not have voting power', async function () {
       const voterBob = signerArray[5]
-      const tenThousandTorn = ethers.utils.parseEther('10000')
+      const oneThousandTorn = ethers.utils.parseEther('1000')
 
       torn = await torn.connect(miningPublicKey)
 
-      await torn.transfer(voterBob.address, tenThousandTorn)
+      await torn.transfer(voterBob.address, oneThousandTorn)
 
       torn = await torn.connect(voterBob)
 
-      await torn.approve(governance.address, tenThousandTorn)
+      await torn.approve(governance.address, oneThousandTorn)
 
       expect(await governance.torn()).to.equal(torn.address)
 
       governance = await governance.connect(voterBob)
 
-      await governance.lockWithApproval(tenThousandTorn.sub(1))
+      await governance.lockWithApproval(oneThousandTorn.sub(1))
 
       await expect(governance.propose(dummy.address, 'dummy')).to.be.revertedWith(
         'Governance::propose: proposer votes below proposal threshold',
@@ -921,7 +918,7 @@ describe('Governance tests', () => {
     })
     it('cannot initialize implementation contract', async () => {
       const impl = await (await ethers.getContractFactory('NewImplementation')).deploy()
-      await expect(impl.initialize(signerArray[0].address)).to.be.revertedWith(
+      await expect(impl.initialize(signerArray[0].address + '000000000000000000000000')).to.be.revertedWith(
         'Contract instance has already been initialized',
       )
     })
@@ -936,7 +933,7 @@ describe('Governance tests', () => {
     await ethers.provider.send('hardhat_reset', [
       {
         forking: {
-          jsonRpcUrl: `https://mainnet.infura.io/v3/${process.env.mainnet_rpc_key}`,
+          jsonRpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY_MAINNET}`,
           blockNumber: process.env.use_latest_block == 'true' ? undefined : 13042331,
         },
       },

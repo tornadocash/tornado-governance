@@ -89,8 +89,8 @@ contract Governance is Initializable, Configuration, Delegation, EnsResolve {
     _initializeConfiguration();
   }
 
-  function initialize(address _torn) public initializer {
-    torn = TORN(_torn);
+  function initialize(bytes32 _torn) public initializer {
+    torn = TORN(resolve(_torn));
     // Create a dummy proposal so that indexes start from 1
     proposals.push(
       Proposal({

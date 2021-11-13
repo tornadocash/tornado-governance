@@ -788,7 +788,7 @@ describe('Start of tests', () => {
     await ethers.provider.send('hardhat_reset', [
       {
         forking: {
-          jsonRpcUrl: `https://mainnet.infura.io/v3/${process.env.mainnet_rpc_key}`,
+          jsonRpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY_MAINNET}`,
           blockNumber: process.env.use_latest_block == 'true' ? undefined : 13211966,
         },
       },
