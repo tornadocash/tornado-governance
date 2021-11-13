@@ -10,11 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      etherscan_api_key: ${{ secrets.ETHERSCAN_API_KEY }}
-      goerli_rpc_key: ${{ secrets.GOERLI_RPC_KEY }}
-      mainnet_rpc_key: ${{ secrets.MAINNET_RPC_KEY }}
-      goerli_account_pk: ${{ secrets.GOERLI_ACCOUNT_PK }}
-      mainnet_account_pk: ${{ secrets.MAINNET_ACCOUNT_PK }}
+      ETHERSCAN_KEY: ${{ secrets.ETHERSCAN_KEY }}
+      INFURA_KEY: ${{ secrets.INFURA_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
