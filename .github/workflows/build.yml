@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: secrets
     env:
       ETHERSCAN_KEY: ${{ secrets.ETHERSCAN_KEY }}
       INFURA_KEY: ${{ secrets.INFURA_KEY }}
