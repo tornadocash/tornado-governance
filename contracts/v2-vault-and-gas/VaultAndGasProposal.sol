@@ -63,10 +63,10 @@ contract VaultAndGasProposal is ImmutableGovernanceInformation {
       "TORN: transfer failed"
     );
 
-    uint96 amountOfTornToAuctionOff = 100 ether;
-    uint96 minBuyAmount = 1.51 ether;
-    uint256 minBidInTorn = 0.01 ether;
-    uint256 fundingThreshold = 5 ether;
+    uint96 amountOfTornToAuctionOff = 787 ether;
+    uint96 minBuyAmount = 11 ether;
+    uint256 minBidInTorn = 10 ether;
+    uint256 fundingThreshold = 9 ether;
 
     TornadoAuctionHandler auctionHandler = new TornadoAuctionHandler();
 

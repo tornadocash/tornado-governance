@@ -58,7 +58,7 @@ contract GovernanceGasUpgrade is GovernanceVaultUpgrade, GasCompensator {
   *                 as such this function can trigger a payable fallback.
                     It is not possible to vote without revert more than once,
 		    without hasAccountVoted being true, eliminating gas refunds in this case.
-		    Gas compensation is also using the low level send(), forwarding 23000 gas 
+		    Gas compensation is also using the low level send(), forwarding 23000 gas
 		    as to disallow further logic execution above that threshold.
   * @param proposalId id of proposal account is voting on
   * @param support true if yes false if no
