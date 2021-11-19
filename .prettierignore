@@ -1,3 +1,8 @@
 .vscode
+.idea
+cache
+artifacts
 build
-scripts
+dist
+README.md
+contracts/v2-vault-and-gas/libraries/EtherSend.sol
