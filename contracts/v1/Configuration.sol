@@ -30,7 +30,7 @@ contract Configuration {
     EXECUTION_DELAY = 2 days;
     EXECUTION_EXPIRATION = 3 days;
     QUORUM_VOTES = 25000e18; // 0.25% of TORN
-    PROPOSAL_THRESHOLD = 1000e18; // 0.1% of TORN
+    PROPOSAL_THRESHOLD = 1000e18; // 0.01% of TORN
     VOTING_DELAY = 75 seconds;
     VOTING_PERIOD = 3 days;
     CLOSING_PERIOD = 1 hours;

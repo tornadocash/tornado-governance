@@ -360,8 +360,8 @@ describe('Start of tests', () => {
             BigNumber.from(0).sub(pE(100)),
           )
 
-          const buyAmount = pE(40)
-          const sellAmount = pE(3.73 + i / 100)
+          const buyAmount = pE(240)
+          const sellAmount = pE(23.73 + i / 100)
 
           await WETH.approve(GnosisEasyAuction.address, sellAmount)
 
@@ -404,7 +404,7 @@ describe('Start of tests', () => {
           claimedSum = claimedSum.add(claimed)
         }
 
-        expect(claimedSum).to.closeTo(ethers.utils.parseEther('100'), ethers.utils.parseUnits('1', 'szabo'))
+        expect(claimedSum).to.closeTo(ethers.utils.parseEther('787'), ethers.utils.parseUnits('1', 'szabo'))
 
         /// Now revert and test with lower
         await sendr('evm_revert', [snapshotIdArray[2]])
@@ -420,7 +420,7 @@ describe('Start of tests', () => {
           )
 
           const buyAmount = pE(0.5)
-          const sellAmount = pE(0.53 + i / 100)
+          const sellAmount = pE(22 + i / 100)
 
           await WETH.approve(GnosisEasyAuction.address, sellAmount)
 
@@ -466,62 +466,8 @@ describe('Start of tests', () => {
         }
 
         expect(claimedSum).to.be.closeTo(
-          ethers.utils.parseEther('100'),
+          ethers.utils.parseEther('787'),
           ethers.utils.parseUnits('1', 'szabo'),
-        )
-
-        /// Now revert and test with below funding
-        await sendr('evm_revert', [snapshotIdArray[2]])
-        snapshotIdArray[2] = await sendr('evm_snapshot', [])
-
-        for (let i = 0; i < signerArray.length; i++) {
-          const bidder = signerArray[i]
-
-          WETH = await WETH.connect(bidder)
-          await expect(() => WETH.deposit({ value: pE(100) })).to.changeEtherBalance(
-            bidder,
-            BigNumber.from(0).sub(pE(100)),
-          )
-
-          const buyAmount = pE(0.5)
-          const sellAmount = pE(0.03 + i / 100)
-
-          await WETH.approve(GnosisEasyAuction.address, sellAmount)
-
-          GnosisEasyAuction = await GnosisEasyAuction.connect(bidder)
-
-          await GnosisEasyAuction.placeSellOrders(
-            38,
-            [buyAmount],
-            [sellAmount],
-            ['0x0000000000000000000000000000000000000000000000000000000000000001'],
-            '0x',
-          )
-
-          orderArray[i] = await OrderHelper.encodeOrder(
-            await GnosisEasyAuction.numUsers(),
-            buyAmount,
-            sellAmount,
-          )
-        }
-
-        auctionEndDt = (await GnosisEasyAuction.auctionData(38))[3].sub(BigNumber.from(await timestamp()))
-
-        await minewait(auctionEndDt.toNumber())
-
-        await GnosisEasyAuction.settleAuction(38)
-
-        for (let i = 0; i < signerArray.length; i++) {
-          await GnosisEasyAuction.claimFromParticipantOrder(38, [orderArray[i]])
-          console.log(
-            `Signer ${i} claimed: `,
-            (await TornToken.balanceOf(signerArray[i].address)).toString(),
-            ' torn',
-          )
-        }
-
-        expect(await TornToken.balanceOf(TornadoAuctionHandler.address)).to.equal(
-          ethers.utils.parseEther('100'),
         )
       })
 
@@ -788,7 +734,7 @@ describe('Start of tests', () => {
     await ethers.provider.send('hardhat_reset', [
       {
         forking: {
-          jsonRpcUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+          jsonRpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
           blockNumber: process.env.use_latest_block == 'true' ? undefined : 13211966,
         },
       },
