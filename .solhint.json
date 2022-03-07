@@ -8,7 +8,8 @@
       }
     ],
     "quotes": ["error", "double"],
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "compiler-version": ["error", "^0.6.0"]
   },
   "plugins": ["prettier"]
 }

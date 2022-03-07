@@ -3,7 +3,7 @@
 pragma solidity ^0.6.12;
 pragma experimental ABIEncoderV2;
 
-import { GovernanceVaultUpgrade } from "../vault/GovernanceVaultUpgrade.sol";
+import { GovernanceVaultUpgrade } from "./GovernanceVaultUpgrade.sol";
 import { GasCompensator } from "./GasCompensator.sol";
 import { Math } from "@openzeppelin/contracts/math/Math.sol";
 
