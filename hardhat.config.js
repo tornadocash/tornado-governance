@@ -7,7 +7,6 @@ require('hardhat-storage-layout')
 require('hardhat-log-remover')
 require('hardhat-contract-sizer')
 
-require('./tasks/deploy_proposal.js')
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -29,7 +28,7 @@ module.exports = {
     hardhat: {
       forking: {
         url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
-        blockNumber: 13042331,
+        blockNumber: 14042331,
       },
       initialBaseFeePerGas: 5,
     },

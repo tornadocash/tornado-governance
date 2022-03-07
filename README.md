@@ -1,10 +1,9 @@
-# tornado-governance
+# Tornado governance
 
 ## Description
-This repository holds all the tornado.cash governance upgrade and original governance contracts.
-The highest governance version right now is version 2, which includes a gas and vault upgrade.
+This repository holds all the tornado.cash governance upgrades and original governance contracts.
 
-## Setup 
+## Tests
 
 ```bash
 git clone https://github.com/tornadocash/tornado-governance.git
