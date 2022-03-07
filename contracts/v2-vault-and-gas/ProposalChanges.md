@@ -1,5 +1,7 @@
 # Tornado Governance Changes
 
+Governance proposal [repo]().
+
 ## Governance Vault Upgrade (GovernanceVaultUpgrade.sol)
 
 `GovernanceVaultUpgrade` is the first major upgrade to tornado governance. This upgrade introduces new logic which is used to communicate with `TornVault` from the governance contract. The motivation behind this upgrade:
