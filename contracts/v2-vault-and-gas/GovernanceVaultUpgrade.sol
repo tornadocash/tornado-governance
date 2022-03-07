@@ -3,9 +3,9 @@
 pragma solidity ^0.6.12;
 pragma experimental ABIEncoderV2;
 
-import { Governance } from "../../v1/Governance.sol";
+import { Governance } from "../v1/Governance.sol";
 import { SafeMath } from "@openzeppelin/contracts/math/SafeMath.sol";
-import { ITornadoVault } from "../interfaces/ITornadoVault.sol";
+import { ITornadoVault } from "./interfaces/ITornadoVault.sol";
 
 /// @title Version 2 Governance contract of the tornado.cash governance
 contract GovernanceVaultUpgrade is Governance {
