@@ -1,14 +1,4 @@
-# Tornado Governance Changes Documentation
-
-`LotteryAndVaultProposal.sol`, if executed, modifies the tornado.cash governance contract in multiple ways.
-
-This serves as documentation for all functions which are being added or modified and which have relevant functionality:
-
-## Governance (Governance.sol)
-
-The `Governance` contract available in the `tornado-governance` repository modifies the original Governance source code to enable overriding functions via inheritance. This has been submitted via PR.
-
-This is a non issue, as logic and memory slots are left unaffected and properly referenced to. `tornado-governance` is being imported as a package.
+# Tornado Governance Changes
 
 ## Governance Vault Upgrade (GovernanceVaultUpgrade.sol)
 
