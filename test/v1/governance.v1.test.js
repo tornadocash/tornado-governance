@@ -3,6 +3,7 @@ const { expect } = require('chai')
 const { BigNumber } = require('@ethersproject/bignumber')
 const { PermitSigner } = require('../../scripts/v1/Permit.js')
 const tornConfig = require('torn-token')
+const config = require('../../config')
 
 const ProposalState = {
   Pending: 0,
@@ -35,7 +36,7 @@ const duration = {
   },
 }
 
-describe('Governance tests', () => {
+describe('V1 governance tests', () => {
   /// NETWORK && DOMAIN
   let chainId
   let domain
@@ -934,7 +935,7 @@ describe('Governance tests', () => {
       {
         forking: {
           jsonRpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
-          blockNumber: process.env.use_latest_block == 'true' ? undefined : 14042331,
+          blockNumber: process.env.use_latest_block == 'true' ? undefined : config.forkBlockNumber,
         },
       },
     ])
