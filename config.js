@@ -1,0 +1,6 @@
+module.exports = {
+  governance: '0x5efda50f22d34F262c29268506C5Fa42cB56A1Ce',
+  TORN: '0x77777FeDdddFfC19Ff86DB637967013e6C6A116C',
+  tornWhale: '0xF977814e90dA44bFA03b6295A0616a897441aceC',
+  forkBlockNumber: 14352372,
+}

@@ -5,6 +5,7 @@ const { propose } = require('../../scripts/helper/propose_proposal.js')
 const testcases = require('@ethersproject/testcases')
 const seedbase = require('../../resources/hdnode.json')
 const accountList = require('../../resources/accounts.json')
+const config = require('../../config')
 
 describe('V2 governance tests', () => {
   ///// ON-CHAIN CONSTANTS
@@ -487,7 +488,7 @@ describe('V2 governance tests', () => {
       {
         forking: {
           jsonRpcUrl: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
-          blockNumber: process.env.use_latest_block == 'true' ? undefined : 14042331,
+          blockNumber: process.env.use_latest_block == 'true' ? undefined : config.forkBlockNumber,
         },
       },
     ])
