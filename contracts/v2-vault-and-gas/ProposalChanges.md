@@ -1,6 +1,6 @@
 # Tornado Governance Changes
 
-Governance proposal [repo](https://github.com/Tisamenus/tornado-lottery-period).
+Governance proposal [repo](https://github.com/peppersec/tornado-vault-and-gas-proposal).
 
 ## Governance Vault Upgrade (GovernanceVaultUpgrade.sol)
 
