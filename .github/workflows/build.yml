@@ -21,6 +21,11 @@ jobs:
       - run: yarn install
       - run: yarn hardhat compile
       - run: yarn lint
+      - run: yarn coverage
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn hardhat test
       - name: Telegram Failure Notification
         uses: appleboy/telegram-action@0.0.7

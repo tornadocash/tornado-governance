@@ -1,4 +1,4 @@
-# Tornado governance
+# Tornado governance [![build status](https://github.com/tornadocash/tornado-governance/actions/workflows/build.yml/badge.svg)](https://github.com/tornadocash/tornado-governance/actions/workflows/build.yml) [![Coverage Status](https://coveralls.io/repos/github/tornadocash/tornado-governance/badge.svg?branch=master)](https://coveralls.io/github/tornadocash/tornado-governance?branch=master)
 
 ## Description
 This repository holds all the tornado.cash governance upgrades and original governance contracts.
