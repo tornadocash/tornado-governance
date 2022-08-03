@@ -16,7 +16,8 @@
     "test:all:f": "yarn prettier:fix && yarn test && yarn lint",
     "test:f": "yarn prettier:fix && yarn test",
     "clean": "yarn prettier:fix && yarn lint",
-    "compile": "yarn prettier:fix && yarn hardhat compile"
+    "compile": "yarn prettier:fix && yarn hardhat compile",
+    "coverage": "yarn hardhat coverage"
   },
   "author": "Tornado.cash team <hello@tornado.cash>",
   "license": "MIT",
@@ -49,6 +50,7 @@
     "hardhat-storage-layout": "^0.1.6",
     "prettier": "^2.3.2",
     "prettier-plugin-solidity": "^1.0.0-beta.17",
-    "solhint-plugin-prettier": "^0.0.5"
+    "solhint-plugin-prettier": "^0.0.5",
+    "solidity-coverage": "^0.7.21"
   }
 }

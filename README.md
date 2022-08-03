@@ -24,13 +24,26 @@ To create your custom governance proposal you need to:
 4. Go to Tornado governance [UI](https://tornadocash.eth.limo/governance) to start the proposal voting process.
 
 
-## Tests
+## Tests/Coverage
+
+Setting up the repository:
 
 ```bash
 git clone https://github.com/tornadocash/tornado-governance.git
 yarn
-cp .env.example .env # you must enter your details into .env
-yarn test
+cp .env.example .env
 ```
 
-## Coverage
+Please fill out .env according to the template provided in it. Please ensure that all of the example values are set to the correct addresses.
+
+To run test scripts:
+
+```bash
+    yarn test
+```
+
+To run tests coverage:
+
+```bash
+    yarn coverage
+```
