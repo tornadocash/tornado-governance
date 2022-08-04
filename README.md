@@ -16,7 +16,7 @@ Tornado governance infrastructure consists of two types of repository:
 
 ### Proposal creation manual
 To create your custom governance proposal you need to:
-1. Create a proposal repository:
+1. Create a proposal repository (for [example](https://github.com/Rezan-vm/tornado-relayer-registry)):
   - a proposal is executed from the governance contract using delegatecall of __executeProposal()__ method
   - as a proposal is executed using delegatecall, it should not store any storage variables - use constants and immutable variables instead
 2. If your proposal is upgrading governance itself, you need to create a pull request to the governance repository. PR should add folder with governance contract upgrade (separate folder in contracts folder - for [example](https://github.com/tornadocash/tornado-governance/pull/6/commits/5f36d5744a9f279a58e9ba1f0e0cd9d493af41c7)).
